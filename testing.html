@@ -1,0 +1,290 @@
+<!Doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>DOMESTIC ARBITRATION</h2>
+    Insert Amount in Dispute (in Rupees)  : <input type="number" id="cBalance" value="">
+        <button type="submit" onclick="domestic_arbitaion();" id="domestic">Calculate</button>
+        <!--<button type="submit" onclick="domestic_arbitaion();"></button>-->
+        <div id="result_domestic">
+        </div>
+        <h2>INTERNATIONAL ARBITRATION</h2>
+        Insert Amount in Dispute (in Rupees)  : <input type="number" id="iBalance" value="">
+        <button type="submit" onclick="international_arbitaion();" id="international">Calculate</button>
+                <div id="result_international">
+                </div>
+        <h2>DOMESTIC COMMERCIAL MEDIATION</h2>
+                Insert Amount in Dispute (in Rupees)  : <input type="number" id="comerciel_Balance" name="commerciel" value="">
+        <button type="submit" onclick="comercial_arbitaion();" id="commercial">Calculate</button>
+                <div id="result_commercial">
+                </div>
+        <h2>INTERNATIONAL COMMERCIAL MEDIATION</h2>
+                Insert Amount in Dispute (in Rupees)  : <input type="number" id="intnation_comerciel_Balance" name="commerciel" value="">
+        <button type="submit" onclick="intnational_comercial_arbitaion();" id="int_commercial">Calculate</button>
+                <div id="result_commercial">
+                </div>
+    <script>
+        //For Domestic  
+        $( "#domestic" ).on( "click", domestic_arbitaion );
+            function domestic_arbitaion() {  
+            var main = $('#cBalance').val();
+            if(main == ''){
+                alert('Please Fill the field');
+            }
+            else{
+            var per = 0;
+            var amount = 0; 
+            // var arbitor_percentage = 0;
+            // var arbitor_amount = 0; 
+            var fix_amount = 75000;
+            switch(true) {
+                case (main < 75000):
+                    alert('Please enter valid amount');
+                    return false;
+                    break;
+                case (main <= 1000000):
+                    per = 5;
+                    arbitor_amount = 75000;
+                    break;
+                case (main <= 5000000):
+                    per = 2.25;
+                    amount = 50000;
+                    // arbitor_percentage = 5;
+                    // arbitor_amount = 75000;
+                    break;
+                case (main <= 10000000):
+                    per = 1.75;
+                    amount = 1420000;
+                    // arbitor_percentage = 3.5;
+                    // arbitor_amount = 275000;
+                    break;
+                    case (main <= 50000000):
+                    per = 0.80;
+                    amount = 2,27,500;
+                    // arbitor_percentage = 1.75;
+                    // arbitor_amount = 450000;
+                    break;
+                    case (main <= 100000000):
+                    per = 0.45;
+                    amount = 5,47,500;
+                    break;
+                    case (main <= 500000000):
+                    per = 0.20;
+                    amount = 7,72,500;
+                    break;
+                    case (main <= 1000000000):
+                    per = 0.08;
+                    amount = 15,72,500;
+                    break;
+                    case (main <= 5000000000):
+                    per = 0.05;
+                    amount = 19,72,500;
+                    break;
+                    case (main > 5000000000):
+                    per = 0.05;
+                    amount = 39,72,500;
+                    break;
+                default:
+                    alert('Please Enter correct amount');
+                }
+//For Admistrative
+            var dec = (per / 100)*main; //its convert 10 into 0.10
+                dec = dec + amount;
+            var discount = main - dec;
+//For Arbitory
+            // var arbitor_dec = (arbitor_percentage / 100)*main; //its convert 10 into 0.10
+            //     var arbitor_decs = arbitor_dec + arbitor_amount;
+            //     var arbitor_discount = main - arbitor_decs;
+    var html = "<span>Registration Fee: <b>"+fix_amount+"</b></span><br>"+ 
+                "<span> Administrative Fee: <b>"+discount+"</b></span><br>";
+                //"<span>One Arbitrator's Fees (excluding expense): <b>"+arbitor_discount+"</b></span><br>";
+                $('#result_domestic').html(html);
+            }
+        }
+// For international
+             $( "#international" ).on( "click", international_arbitaion );
+             function international_arbitaion(){
+                var main = $('#iBalance').val();
+                if(main == ''){
+                    alert('Please Fill the field');
+                }
+                else{
+                var per = 0;
+                var amount = 0; 
+                var reg_fee = 500;
+                // var arbitor_percentage = 0;
+                // var arbitor_amount = 0;
+                switch(true) {
+                    case (main < 75000):
+                        alert('Please enter valid amount');
+                        return false;
+                    break;
+                    case (main <= 1000000):
+                        per = 5;
+                        break;
+                    case (main <= 5000000):
+                        per = 2.25;
+                        amount = 50000;
+                        // arbitor_amount = 50000;
+                        // arbitor_percentage = 2.25;
+                        break;
+                    case (main <= 10000000):
+                        per = 1.75;
+                        amount = 1420000;
+                        // arbitor_amount = 1420000;
+                        // arbitor_percentage = 1.75;
+                        break;
+                        case (main <= 50000000):
+                        per = 0.80;
+                        amount = 2,27,500;
+                        // arbitor_amount = 2,27,500;
+                        // arbitor_percentage = 0.80;
+                        break;
+                        case (main <= 100000000):
+                        per = 0.45;
+                        amount = 5,47,500;
+                        // arbitor_amount = 5,47,500;
+                        // arbitor_percentage = 0.45;
+                        break;
+                        case (main <= 500000000):
+                        per = 0.20;
+                        amount = 7,72,500;
+                        break;
+                        case (main <= 1000000000):
+                        per = 0.08;
+                        amount = 15,72,500;
+                        break;
+                        case (main <= 5000000000):
+                        per = 0.05;
+                        amount = 19,72,500;
+                        break;
+                        case (main > 5000000000):
+                        per = 0.05;
+                        amount = 39,72,500;
+                        break;
+                    default:
+                        alert('Please Enter correct amount');
+                    }
+                    //For Admistrative
+                var dec = (per / 100)*main; //its convert 10 into 0.10
+                    dec = dec + amount;
+                var discount = main - dec;
+                //For Arbitory
+                // var arbitor_dec = (arbitor_percentage / 100)*main; //its convert 10 into 0.10
+                // var arbitor_decs = arbitor_dec + arbitor_amount;
+                // var arbitor_discount = main - arbitor_decs;
+        var html = "<span>Registration Fee: <b> $"+reg_fee+"</b></span><br>"+ 
+                    "<span> Administrative Fee: <b>"+discount+"</b></span><br>";
+                    //"<span>One Arbitrator's Fees (excluding expense): <b>"+arbitor_discount+"</b></span><br>";
+                    $('#result_international').html(html);
+             }
+                }  
+                
+                
+// For Domestic Commercial
+$( "#commercial" ).on( "click", comercial_arbitaion );
+             function comercial_arbitaion(){
+                var main = $('#comerciel_Balance').val();
+                if(main == ''){
+                    alert('Please Fill the field');
+                }
+                else{
+                var per = 0;
+                var amount = 0; 
+                var reg_fee = 25000;
+                switch(true) {
+                    case (main < 75000):
+                        alert('Please enter valid amount');
+                        return false;
+                    break;
+                    case (main <= 1000000 ):
+                        //per = 5;
+                        amount = 30000;
+                        break;
+                    case (main <= 5000000):
+                        per = 1.00;
+                        amount = 30000;
+                        break;
+                    case (main <= 10000000):
+                        per = 0.80;
+                        amount = 70000;
+                        break;
+                        case (main <= 50000000):
+                        per = 0.60;
+                        amount = 100000;
+                        break;
+                        case (main <= 100000000):
+                        per = 0.45;
+                        amount = 3,50,000;
+                        break;
+                    default:
+                        alert('Please Enter correct amount');
+                        return false;
+                    }
+                var dec = (per / 100)*main; //its convert 10 into 0.10
+                var dec = dec + amount;
+                var discount = main - dec;
+        var html = "<span>Registration Fee: <b>"+reg_fee+"</b></span><br>"+ 
+                    "<span> Administrative Fee: <b>"+discount+"</b></span><br>";
+                    //"<span>One Arbitrator's Fees (excluding expense): <b>"+main+"</b></span><br>";
+                    $('#result_commercial').html(html);
+             }
+            }
+ // For International Commercial
+$( "#int_commercial" ).on( "click", intnational_comercial_arbitaion );
+             function intnational_comercial_arbitaion(){
+                var main = $('#intnation_comerciel_Balance').val();
+                if(main == ''){
+                    alert('Please Fill the field');
+                }
+                else{
+                var per = 0;
+                var amount = 0; 
+                reg_fee = 500;
+                switch(true) {
+                    case (main > 1000 ):
+                        //per = 5;
+                        amount = 1000;
+                        break;
+                    case (main <= 50000 ):
+                        //per = 5;
+                        amount = 1000;
+                        break;
+                    case (main <= 100000):
+                        per = 1.00;
+                        amount = 1000;
+                        break;
+                    case (main <= 500000):
+                        per = 0.60;
+                        amount = 1500;
+                        break;
+                        case (main <= 100000):
+                        per = 0.45;
+                        amount = 3900;
+                        break;
+                        case (main <= 500000):
+                        per = 0.15;
+                        amount = 6150;
+                        break;
+                        case (main <= 1000000):
+                        per = 0.05;
+                        amount = 12150;
+                        break;
+                    default:
+                        alert('Please Enter correct amount');
+                        return false;
+                    }
+                var dec = (per / 100)*main; //its convert 10 into 0.10
+                var dec = dec + amount;
+                var discount = main - dec;
+        var html = "<span>Registration Fee: <b> $"+reg_fee+"</b></span><br>"+ 
+                    "<span> Administrative Fee: <b>"+discount+"</b></span><br>";
+                    //"<span>One Arbitrator's Fees (excluding expense): <b>"+main+"</b></span><br>";
+                    $('#int_commercial').html(html);
+             }
+                }
+    </script>
+</body>
+</html>
